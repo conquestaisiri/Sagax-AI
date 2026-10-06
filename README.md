@@ -1,79 +1,82 @@
-# Sagax AI
-
-![Windows](https://img.shields.io/badge/Windows-10%2F11-0078D6?style=flat-square&logo=windows&logoColor=white)
-![Status](https://img.shields.io/badge/status-active-brightgreen?style=flat-square)
-![Version](https://img.shields.io/badge/version-1.5.2-blue?style=flat-square)
-![License](https://img.shields.io/badge/license-proprietary-red?style=flat-square)
-
-**Sagax AI is a real-time interview assistant for Windows.** It listens to your
-live interview (system audio, microphone, or both), understands what's on your
-screen, and drafts natural first-person answers in your own voice — as it
-happens.
-
 <p align="center">
-  <img src="assets/logo.png" alt="Sagax AI" width="220" />
+  <img src="assets/logo.png" alt="Sagax AI logo" width="110" />
 </p>
 
----
+# Sagax AI
 
-## What it does
+**Current primary build: Sagax AI 1.5.8 — Preview**
 
-- 🎧 **Hears the interviewer** through system loopback audio, your microphone,
-  or both at once — with per-source pipelines so overlapping speech never fuses.
-- 🖥️ **Reads your screen** — OCR plus vision models for questions, code,
-  charts, and tables. Automatic, manual (hotkey), or fully off.
-- ⌨️ **Global hotkeys** — analyze the screen, force an answer, or toggle the
-  Mini Answer window from any app. They belong to Sagax and release when it
-  closes; they never steal focus.
-- 🔑 **Quota-aware multi-key routing** — every provider key is health-tracked
-  with live quota headroom. A rate-limited key fails over in milliseconds;
-  keys sharing one account quota are never pointlessly retried one after
-  another.
-- 🗝️ **In-app key manager** — per-provider key lists with personal labels,
-  one-click validation (no quota spent), encrypted storage.
-- 🪟 **Mini Answer pill** — the current answer, always on top, never in the way.
-- 🔒 **Private by design** — credentials live encrypted on your machine
-  (Windows DPAPI). No account, no cloud dashboard, no telemetry.
+Sagax AI is a Windows desktop app with two separate ways to work. Choose **API
+Mode** to use Sagax with an AI provider you configure, or **GPT Mode** to open
+the ChatGPT website inside Sagax. Only one mode runs at a time.
 
-## How it answers
+> **Download only from the current release.** Earlier prototype files are not
+> current downloads. Version 1.5.8 is a preview build, not a claim that the app
+> has been tested on every Windows computer.
 
-1. Speech is transcribed per source and merged into timestamped utterances.
-2. Questions are detected, attributed (interviewer vs. you), and tracked in a
-   turn ledger with speaker continuity.
-3. The router picks the healthiest provider/model/key with real quota headroom
-   and streams the draft — then the Mini Answer pill shows it instantly.
+## Download Sagax AI 1.5.8
 
-## Screenshots
+**[Open the Sagax AI 1.5.8 release](https://github.com/conquestaisiri/Sagax-AI/releases/tag/v1.5.8)**
 
-> Coming soon — the pill, the dashboard, and Settings in action.
+Choose one installer from that page:
 
-## Tech at a glance
+- **EXE setup** — the normal interactive installer for most people.
+- **MSI package** — use this if you specifically need a Windows Installer
+  package, for example for managed deployment.
 
-| Layer        | Technology                              |
-| ------------ | --------------------------------------- |
-| App          | Python, WebView2 dashboard + Mini pill  |
-| Audio        | Loopback + mic capture, cloud + local transcription |
-| Vision       | Tesseract OCR + multimodal vision models |
-| AI routing   | Multi-provider pool with quota domains  |
-| Speaker      | On-device embedding model (ONNX)        |
-| Packaging    | PyInstaller + WiX (per-machine MSI)     |
-| Secret store | Windows DPAPI (`keys_v1`)               |
+Both install the same 1.5.8 preview. They are large downloads (about 0.8 GB
+each); install only one. The release page includes SHA-256 checksums so you can
+check that your download matches the published file. The installers are not
+digitally signed, so Windows may say that the publisher is unknown. A checksum
+checks that a file was not changed in download; it does **not** prove who made
+the file or certify that it is safe. Download only from this repository's
+release page.
 
-## About this repository
+## Pick a mode
 
-This is the **public showcase** for Sagax AI. It contains product
-documentation and brand assets only:
+| Mode | What it does | What you need |
+| --- | --- | --- |
+| **API Mode** | Uses Sagax's own listening and answer interface with a supported AI provider. | A provider API key and working audio setup. Provider limits or charges may apply. |
+| **GPT Mode** | Shows the ChatGPT website inside Sagax. ChatGPT's website handles its own sign-in and chat. | Internet access; a ChatGPT account if you want to sign in. |
 
-- `docs/ARCHITECTURE.md` — how the system fits together
-- `docs/PRIVACY.md` — where your data lives (spoiler: only your machine)
-- `docs/CHANGELOG.md` — release history
-- `assets/` — brand artwork
+The modes have separate settings. Switching modes stops the current mode before
+starting the other. A provider API key is not your ChatGPT password.
 
-**Application source code, installers, and credentials are not published
-here.** Sagax AI is proprietary software — © Sagax. All rights reserved
-(see [LICENSE](LICENSE)).
+## First steps
 
-## Try it
+1. Install one of the 1.5.8 installers above and open Sagax AI.
+2. Choose **API Mode** or **GPT Mode** on the welcome screen. You can change
+   this later in **Settings → Application mode**.
+3. Follow the matching guide: [API Mode](docs/GETTING_STARTED.md#api-mode) or
+   [GPT Mode](docs/GETTING_STARTED.md#gpt-mode).
+4. Use the in-app **Step-by-step guide** if you want Sagax to walk you through
+   the buttons.
 
-Trial builds (time-limited, bring-your-own-keys) are available on request.
-Contact the maintainer through the profile linked on this page.
+## Important preview limits
+
+- Sagax AI 1.5.8 is a preview. Speed and results depend on your computer,
+  audio setup, internet connection, and provider. No fixed response time is
+  promised.
+- API Mode's screen-reading and visual-answer features are turned off in this
+  build. Do not rely on disabled screen controls.
+- GPT Mode opens the ChatGPT website; it is not the same as API Mode and does
+  not use API Mode's answer settings.
+- Review [privacy and data flow](docs/PRIVACY.md) before sending audio,
+  transcripts, profile details, or screenshots to an AI service.
+
+## Help and project information
+
+- [Getting started and step-by-step instructions](docs/GETTING_STARTED.md)
+- [Troubleshooting](docs/TROUBLESHOOTING.md)
+- [Privacy and data flow](docs/PRIVACY.md)
+- [How the two modes work](docs/ARCHITECTURE.md)
+- [1.5.8 preview notes](docs/CHANGELOG.md)
+- [Support](SUPPORT.md)
+- [Security reporting](SECURITY.md)
+
+## This repository
+
+This is the product information and download page for Sagax AI. The Windows
+application source code is not published here. Sagax AI is proprietary; see
+[LICENSE](LICENSE). The current primary download is always the 1.5.8 release
+linked above—not an old file or a copy attached to a discussion.

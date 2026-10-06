@@ -1,0 +1,33 @@
+name: Repository hygiene
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-repository-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Check required pages and keep private files out
+        shell: bash
+        run: |
+          set -euo pipefail
+          for path in README.md LICENSE SECURITY.md SUPPORT.md docs/GETTING_STARTED.md docs/PRIVACY.md; do
+            test -f "$path" || { echo "Missing required file: $path"; exit 1; }
+          done
+          if git ls-files | grep -Eiq '(^|/)([^/]*\.(exe|msi|msm|msp|cab|zip|7z|rar)|\.env([^/]*))$'; then
+            echo "Installer, archive, or environment file is tracked in this documentation repository."
+            exit 1
+          fi
+          if git ls-files | grep -Eiq '(^|/)(secrets?|credentials?)(/|\.|$)|(^|/)[^/]*(api[_-]?key|password|token)[^/]*\.(txt|json|ya?ml)$'; then
+            echo "A sensitive-looking file path is tracked. Remove it and rotate any exposed credential."
+            exit 1
+          fi

@@ -1,5 +1,5 @@
-# Sagax-AI showcase repo — nothing secret should ever land here.
-# Defense in depth: block installers, archives, env files, and key material.
+# Sagax AI public product-information repository.
+# Installer binaries belong on versioned GitHub Releases, not in Git history.
 *.msi
 *.msm
 *.msp
@@ -8,7 +8,7 @@
 *.rar
 *.7z
 *.exe
-*.msi.asc
+*.blockmap
 *.env
 *.pem
 *.key
@@ -18,3 +18,6 @@
 *token*.txt
 credentials*.json
 secrets/
+node_modules/
+dist/
+build/

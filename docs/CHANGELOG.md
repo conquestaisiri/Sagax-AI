@@ -1,37 +1,23 @@
-# Sagax AI — Changelog
+# Sagax AI release notes
 
-## 1.5.2 — Provider key manager + trial build
+## 1.5.8 — Current primary preview
 
-- Settings → API keys: per-provider key lists with personal labels, one-click
-  validation that spends no quota, encrypted storage, live reload without
-  restart, safe removal.
-- Separate time-limited trial build (bring your own keys, honest countdown).
-- Trial length: 4 calendar months + 9 days from first launch.
+- One desktop app now presents API Mode and GPT Mode as separate choices.
+- Mode-specific controls and settings are separated; only one mode runs at a
+  time.
+- The welcome screen and in-app step-by-step guide explain how to start in
+  either mode.
+- The app and tray use the current Sagax branding.
+- The API Mode screen-reading and visual-answer path is disabled in this
+  preview.
 
-## 1.5.1 — Global hotkeys + manual vision
+### Checks performed
 
-- System-wide shortcuts (Analyze screen, Answer now, Show/hide Mini) that work
-  from any app while Sagax is open and release when it closes. Fully
-  configurable with conflict detection.
-- Manual vision mode: automatic screen-watching goes dormant; one hotkey
-  press captures, reads, and answers the current screen into the app and the
-  Mini pill. Vision Off captures nothing at all.
-- Credential health/quotas mirrored live for routing telemetry.
+- 25 Python unit tests passed.
+- Desktop host TypeScript type-check passed.
+- Packaged sidecar smoke test passed and reported version 1.5.8.
+- Installer and executable version metadata were checked.
 
-## 1.5.0 — Quota-aware credential scheduling
-
-- Quota domains: keys sharing one account quota are scheduled as one pool;
-  independent quotas as independent capacity. Pre-emptive headroom reserves,
-  distinct failure states (auth/billing/access/rate-limit/transient), and
-  millisecond same-domain failover without request storms.
-
-## 1.4.0 — Multimodal cognitive release
-
-- Dual-source audio pipelines, visual-turn engine with actionability scoring,
-  hedged low-latency chat routing, on-device speaker continuity, WebView2
-  dashboard with Mini Answer pill.
-
-## 1.3.x — Dual-capture repair and human-like field acceptance
-
-- Loopback + microphone independence, answer inhibition for user speech,
-  self-output suppression, interviewer-turn continuity.
+These checks are not a full test on every Windows version or computer. This
+build remains a preview; see the [download page](../README.md#download-sagax-ai-158)
+and [troubleshooting guide](TROUBLESHOOTING.md).

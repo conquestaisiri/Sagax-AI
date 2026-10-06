@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Sagax AI getting started guide
+    url: https://github.com/conquestaisiri/Sagax-AI/blob/main/docs/GETTING_STARTED.md
+    about: Follow the steps for API Mode or GPT Mode.
+  - name: Sagax AI troubleshooting guide
+    url: https://github.com/conquestaisiri/Sagax-AI/blob/main/docs/TROUBLESHOOTING.md
+    about: Check common setup and audio problems before reporting an issue.

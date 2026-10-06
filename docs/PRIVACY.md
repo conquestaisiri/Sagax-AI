@@ -1,39 +1,34 @@
-# Sagax AI — Privacy
+# Privacy and data flow
 
-## The short version
+This guide explains the two visible modes in Sagax AI 1.5.8. It is not a legal
+privacy policy for the AI providers you choose.
 
-Your data lives on your computer. There is no Sagax account, no cloud
-dashboard, and no telemetry.
+## API Mode
 
-## Credentials
+API Mode can send information needed for your request to the selected AI
+provider. Depending on what you use, that may include typed questions, captured
+audio or its transcript, and profile or conversation context. Provider
+retention, training, privacy, usage-limit, and billing rules are set by that
+provider. Check those rules before using the service.
 
-- API keys are encrypted with **Windows DPAPI** (current-user scope) the
-  moment you add them in Settings → API keys.
-- They are decrypted only in memory, only to call the AI provider you chose.
-- They are never written to logs, reports, settings exports, or installers.
-- Key labels are stored separately from key values, referenced by an
-  irreversible fingerprint — a label alone can never reveal a key.
+Only add API keys that you are allowed to use. Never put a key, password, or
+other secret into a question, profile field, issue report, or screenshot.
 
-## What leaves your machine
+## GPT Mode
 
-Only what the features you enable require:
+GPT Mode opens the ChatGPT website inside Sagax. Sign in on the website itself;
+Sagax's API-key settings are not for your ChatGPT password. Content sent through
+the website is handled under the applicable ChatGPT account and service terms.
 
-| You enable…      | Sent to…                          | Content                    |
-| ---------------- | --------------------------------- | -------------------------- |
-| Answers          | Your chosen AI provider(s)        | Question + profile context |
-| Transcription    | Your chosen transcription lane    | Audio chunks               |
-| Screen reading   | Your chosen vision lane           | Screenshots / OCR text     |
+## Before a live conversation
 
-Disable a feature and its traffic stops entirely. Vision Off performs zero
-captures — verified by idle counters, not by promise.
+- Check which mode is active and which audio source it uses.
+- Do not send another person's private conversation without permission.
+- Use a harmless test question before using real interview or work content.
+- Review the settings for the mode you are using; the other mode's settings do
+  not control it.
+- Sagax AI 1.5.8 does not require a Sagax online account. This repository does
+  not provide cloud sync for settings or sessions.
 
-## What stays local
-
-Profile/CV text, sessions, settings, trial anchors, routing statistics, and
-the credential vault — all under your own user profile. Uninstalling removes
-the application; your data folder is left for you to keep or delete.
-
-## Screen privacy
-
-The app's own windows are masked out of every capture, and an optional
-stealth mode hides Sagax from recordings and shared screens.
+For provider-specific data practices, use the provider's own privacy and
+service documentation.

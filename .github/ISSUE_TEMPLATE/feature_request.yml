@@ -1,0 +1,30 @@
+name: Feature request
+description: Suggest an improvement to Sagax AI or its guides
+title: "[Request]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What would you like to do?
+      description: Explain the problem in simple steps.
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: What change would help?
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Which part is this about?
+      options:
+        - API Mode
+        - GPT Mode
+        - Both modes
+        - Documentation or installation
+        - Not sure
+    validations:
+      required: true
